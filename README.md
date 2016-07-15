@@ -1,2 +1,6 @@
 # TinyPyBot
-A tiny and easy telegram bot library for python.
+
+A small and easy telegram bot library for python.
+
+***Requisites:***
+- requests (http://www.python-requests.org)
