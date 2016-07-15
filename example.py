@@ -7,8 +7,8 @@ token  = "xxxxxxxxxxxxxxxxxxxxxxxxx" #your bot token
 bot = TinyPyBot(token)
 
 while bot.getMessages():
-  if bot.message is None:
-	continue
+	if bot.message is None:
+		continue
 	
 	if "message" in bot.message:
 		message = bot.message["message"]
@@ -25,5 +25,3 @@ while bot.getMessages():
 		if "text" in message:
 			if "hello" in message["text"]:
 				bot.sendMessage("Hi!", message["chat"]["id"])
-				
-				
