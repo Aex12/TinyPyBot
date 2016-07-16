@@ -48,15 +48,15 @@ class TinyPyBot:
 		params.update({'chat_id': chat_id, 'text': text})
 		return self.request("sendMessage", params)
 
+	def sendMessageReply(self, text, message, params={}):
+		params.update({'chat_id': message["chat"]["id"], 'text': text, 'reply_to_message_id': message['message_id']})
+		return self.request("sendMessage", params)
+
 	def editMessageText(self, text, chat_id, message_id, params={}):
 		params.update({'chat_id': chat_id, 'message_id': message_id, 'text': text})
 		return self.request("editMessageText", params)
 
-	def forceReply(self, selective=0, params={}):
-		params.update({"force_reply": True})
-		if selective != 0: params.update({"selective": selective})
-		return json.dumps(params)
-
+class reply_markup:
 	class inlineKeyboard:
 		def __init__(self):
 			self.tojson = {"inline_keyboard": []}
@@ -67,3 +67,8 @@ class TinyPyBot:
 
 		def getJson(self):
 			return json.dumps(self.tojson)
+
+	def forceReply(self, selective=0, params={}):
+		params.update({"force_reply": True})
+		if selective != 0: params.update({"selective": selective})
+		return json.dumps(params)
