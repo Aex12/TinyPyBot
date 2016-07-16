@@ -3,8 +3,10 @@
 
 from TinyPyBot import TinyPyBot
 
+
 token  = "xxxxxxxxxxxxxxxxxxxxxxxxx" #your bot token
 bot = TinyPyBot(token)
+
 
 while bot.getMessages():
 	if bot.message is None: continue
