@@ -23,4 +23,4 @@ while bot.getMessages():
 					bot.sendMessage("ping", message["chat"]["id"])
 		if "text" in message:
 			if "hello" in message["text"]:
-				bot.sendMessage("Hi!", message["chat"]["id"])
+				bot.sendMessageReply("Hi!", message)
