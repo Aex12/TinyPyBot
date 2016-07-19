@@ -43,8 +43,9 @@ class TinyPyBot:
 		return self.request("sendMessage", params)
 
 	def sendMessageReply(self, text, message, params={}):
-		params.update({'chat_id': message["chat"]["id"], 'text': text, 'reply_to_message_id': message['message_id']})
-		return self.request("sendMessage", params)
+		if "message" in message:
+			params.update({'chat_id': message["message"]["chat"]["id"], 'text': text, 'reply_to_message_id': message["message"]['message_id']})
+			return self.request("sendMessage", params)
 
 	def editMessageText(self, text, chat_id, message_id, params={}):
 		params.update({'chat_id': chat_id, 'message_id': message_id, 'text': text})
@@ -101,7 +102,7 @@ class parse_message:
 
 	@property
 	def text(self):
-		if not self.is_message: return False
+		if not self.is_message: return None
 		return self.data["message"]["text"]
 
 	@property
